@@ -3,15 +3,16 @@ package com.example.mypetproject.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 public class User {
 
     @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     @Column(name = "user_name")
@@ -25,5 +26,8 @@ public class User {
 
     @Column(name = "user_balance")
     private Long userBalance;
+
+    @OneToMany(mappedBy = "user")
+    private List<Ticket> userTickets;
 
 }
