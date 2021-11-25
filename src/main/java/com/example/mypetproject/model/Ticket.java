@@ -4,7 +4,6 @@ package com.example.mypetproject.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tickets")
@@ -16,14 +15,19 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ticketId;
 
-    @Column(name = "ticket_film_name")
-    private String ticketFilmName;
-
-    @Column(name = "ticket_date")
-    private LocalDateTime ticketDateTime;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "ticket_price")
+    private Long ticketPrice;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_session_id")
+    private MovieSession movieSession;
+
+    @OneToOne
+    @JoinColumn(name = "seat_id")
+    private Seat seat;
 
 }
