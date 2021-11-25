@@ -18,6 +18,9 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "user_age")
+    private Byte userAge;
+
     @Column(name = "user_mail")
     private String userMail;
 
