@@ -22,7 +22,7 @@ public class Row {
     @JoinColumn(name = "palce_id")
     private Place place;
 
-    @OneToMany(mappedBy = "row")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "row")
     private List<Seat> seatListInRow;
 
 }

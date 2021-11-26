@@ -1,4 +1,7 @@
 package com.example.mypetproject.repository;
 
-public interface TicketRepository {
+import com.example.mypetproject.model.Ticket;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TicketRepository extends JpaRepository<Ticket, Long>{
 }
