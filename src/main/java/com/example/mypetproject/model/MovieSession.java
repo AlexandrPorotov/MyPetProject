@@ -1,5 +1,6 @@
 package com.example.mypetproject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,13 +25,14 @@ public class MovieSession {
     private Film film;
 
     @Column(name = "date_time_start_session")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dateTimeStartSession;
 
     @ManyToOne
     @JoinColumn(name = "place_id")
     private Place place;
 
-    @OneToMany(mappedBy = "movieSession")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "movieSession")
     private List<Ticket> ticketList;
 
 }

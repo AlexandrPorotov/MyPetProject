@@ -25,7 +25,7 @@ public class Film {
     @Column(name = "film_duration")
     private Duration filmDuration;
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
     private List<MovieSession> filmSessionList;
 
 }

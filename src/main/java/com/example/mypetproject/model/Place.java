@@ -18,13 +18,13 @@ public class Place {
     @Column(name = "place_number")
     private Integer placeNumber;
 
-    @OneToMany(mappedBy = "place")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "place")
     private List<MovieSession> movieSessionList;
 
-    @OneToMany(mappedBy = "place")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "place")
     private List<Seat> seatListInPlace;
 
-    @OneToMany(mappedBy = "place")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "place")
     private List<Row> rowListInPlace;
 
 }
