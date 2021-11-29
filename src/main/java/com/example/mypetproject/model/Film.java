@@ -1,5 +1,6 @@
 package com.example.mypetproject.model;
 
+import com.example.mypetproject.dto.FilmInfo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class Film {
     private Long filmId;
 
     @Column(name = "film_name")
-    private Long filmName;
+    private String filmName;
 
     @Column(name = "film_description")
     private String filmDescription;
@@ -28,4 +29,19 @@ public class Film {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
     private List<MovieSession> filmSessionList;
 
+    public void setFilm(FilmInfo filmInfo){
+        this.filmDescription = filmInfo.getFilmDescription();
+        this.filmDuration = Duration.ofSeconds(filmInfo.getFilmDuration());
+        this.filmName = filmInfo.getFilmName();
+    }
+
+    @Override
+    public String toString(){
+        return "Film {"+
+                "id = " + filmId +
+                ", film name ='" + filmName + "'" +
+                ", film duration ='" + filmDuration.getSeconds() + " sec '" +
+                ", film description ='" + filmDescription + "'" +
+                "}";
+    }
 }

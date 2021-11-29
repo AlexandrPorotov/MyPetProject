@@ -21,6 +21,9 @@ public class Seat {
     @OneToOne
     private Ticket ticket;
 
+    @Column(name = "is_vacant")
+    private Boolean isVacant;
+
     @ManyToOne
     @JoinColumn(name = "place_id")
     private Place place;
