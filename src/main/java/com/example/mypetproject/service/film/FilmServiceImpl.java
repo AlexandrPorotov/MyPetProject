@@ -22,16 +22,17 @@ public class FilmServiceImpl implements FilmService{
 
     @Override
     public Film getFilmById(Long filmId) {
-        return null;
+        return filmRepository.getById(filmId);
     }
 
     @Override
     public Film getFilmByName(String filmName) {
-        return null;
+        return filmRepository.findFilmByName(filmName);
     }
 
     @Override
     public Boolean findFilmByName(String filmName) {
-        return null;
+        Film film = filmRepository.findFilmByName(filmName);
+        return film == null;
     }
 }
