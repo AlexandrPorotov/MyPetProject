@@ -40,7 +40,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
         if(userFromBd == null) {
 
-            response = "No account, it doesn't matter, go through registration";
+            response = "Check your name. If you dont have account, it doesn't matter, go through registration. ";
 
         } else if (userService.checkUserPassword(userFromBd,userInfo.getUserPassword())) {
 

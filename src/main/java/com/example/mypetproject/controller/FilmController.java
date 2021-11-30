@@ -14,11 +14,18 @@ public class FilmController {
 
     private final FilmService filmService;
 
+    private String response;
+
     @PostMapping("/add_film")
     public String addFilm(@RequestBody FilmInfo filmInfo){
-        Film film = filmService.addFilm(filmInfo);
-        System.out.println(film.toString());
-        return film.toString();
+        if(filmService.findFilmByName(filmInfo.getFilmName())){
+            Film film = filmService.addFilm(filmInfo);
+            response = "Film added - " + film.toString();
+        } else {
+            Film filmFromBD = filmService.getFilmByName(filmInfo.getFilmName());
+            response = "This film already exist. "+filmFromBD.toString();
+        }
+        return response;
     }
 
 }
